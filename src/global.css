@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+    /* LIGHT THEME */
+    --bg: #eef0fb;
+    --blob1: #ffb8a8;
+    --blob2: #b9a8ff;
+    --blob3: #9fe3ff;
+
+    --glass: rgba(255, 255, 255, 0.55);
+    --glass-strong: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.85);
+    --glass-shadow: 0 10px 40px rgba(90, 80, 160, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+    --blur: 22px;
+    --text: #1d1a3a;
+    --muted: #6c6a8a;
+    --accent: #6a5cff;
+    --accent-2: #22b7e8;
+
+    --hero: linear-gradient(135deg,
+            #6a5cff 0%,
+            #9a6bff 55%,
+            #ff8fb0 100%);
+    --hero-text: #fff;
+
+    --income: #12a37a;
+    --expense: #e5484d;
+
+    --track: rgba(106, 92, 255, 0.12);
+    --field: rgba(255, 255, 255, 0.7);
+}
+
+/* DARK THEME */
+[data-theme="dark"] {
+    --bg: #0b0b1a;
+    --blob1: #5b3df5;
+    --blob2: #0fb5ae;
+    --blob3: #c026a3;
+
+    --glass: rgba(24, 24, 48, 0.55);
+    --glass-strong: rgba(32, 32, 62, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+    --blur: 26px;
+    --text: #f1f0ff;
+    --muted: #9a98bd;
+    --accent: #8b7bff;
+    --accent-2: #2dd4bf;
+
+    --hero: linear-gradient(135deg,
+            #4a2fe0 0%,
+            #7c3aed 50%,
+            #0fb5ae 130%);
+    --hero-text: #fff;
+
+    --income: #34d399;
+    --expense: #ff6b81;
+
+    --track: rgba(139, 123, 255, 0.16);
+    --field: rgba(255, 255, 255, 0.05);
+}
+
+@theme inline {
+    /* Fonts */
+    --font-head: 'Sora', system-ui, sans-serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+
+    /* Custom colors */
+    --color-bg: var(--bg);
+    --color-blob1: var(--blob1);
+    --color-blob2: var(--blob2);
+    --color-blob3: var(--blob3);
+
+    --color-glass: var(--glass);
+    --color-glass-strong: var(--glass-strong);
+    --color-glass-border: var(--glass-border);
+
+    --color-text: var(--text);
+    --color-muted: var(--muted);
+    --color-accent: var(--accent);
+    --color-accent-2: var(--accent-2);
+
+    --color-hero-text: var(--hero-text);
+    --color-income: var(--income);
+    --color-expense: var(--expense);
+    --color-track: var(--track);
+    --color-field: var(--field);
+
+    /* Border radius */
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+}
+
+.aurora i {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .55;
+    transition: background .4s;
+}
+
+.aurora:nth-child(1) {
+    width: 46vw;
+    height: 46vw;
+    left: -10vw;
+    top: -12vw;
+    background: var(--blob1);
+}
+
+.aurora:nth-child(2) {
+    width: 40vw;
+    height: 40vw;
+    right: -8vw;
+    top: 10vh;
+    background: var(--blob2);
+}
+
+.aurora:nth-child(3) {
+    width: 36vw;
+    height: 36vw;
+    left: 30vw;
+    bottom: -16vw;
+    background: var(--blob3);
+}
