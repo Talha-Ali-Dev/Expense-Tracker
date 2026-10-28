@@ -95,3 +95,7 @@
     --radius-md: 18px;
     --radius-sm: 12px;
 }
+
+.active{
+    background-color: var(--glass-strong);
+}

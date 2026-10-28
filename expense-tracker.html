@@ -19,7 +19,7 @@
 
     <div class="grid grid-cols-5 gap-6 z-2 max-w-360 p-6 mx-auto justify-start items-start">
 
-        <aside class="bg-glass/60 border border-glass-border p-6 rounded-lg z-2 h-screen">
+        <aside class="bg-glass/60 border border-glass-border p-6 rounded-lg z-2 h-full">
 
             <div class="flex justify-start gap-3 items-center mb-6">
                 <div
@@ -100,6 +100,7 @@
 
             </div>
 
+            <!-- Balance  -->
             <div
                 class="bg-[linear-gradient(135deg,#6a5cff_0%,#9a6bff_55%,#ff8fb0_100%)] shadow-[0_6px_18px_rgba(106,_92,_255,_.4)] p-6 rounded-lg text-hero-text flex justify-between flex-col relative overflow-hidden">
 
@@ -132,7 +133,8 @@
 
             </div>
 
-            <div class="bg-glass-strong rounded-lg border-2 border-white p-6 flex flex-col justify-between">
+            <!-- Income  -->
+            <div class="bg-glass-strong/70 rounded-lg border-2 border-white p-6 flex flex-col justify-between">
 
                 <div class="text-muted text-sm flex justify-between items-center">
                     <span>Income</span>
@@ -155,7 +157,8 @@
 
             </div>
 
-            <div class="bg-glass-strong rounded-lg border-2 border-white p-6 flex flex-col justify-between">
+            <!-- Expenses  -->
+            <div class="bg-glass-strong/70 rounded-lg border-2 border-white p-6 flex flex-col justify-between">
 
                 <div class="text-muted text-sm flex justify-between items-center">
                     <span>Expense</span>
@@ -178,7 +181,8 @@
 
             </div>
 
-             <div class="bg-glass-strong rounded-lg border-2 border-white p-6 flex flex-col justify-between col-span-2">
+            <!-- Transactions  -->
+            <div class="bg-glass-strong/70 rounded-lg border-2 border-white p-6 flex flex-col col-span-2">
 
                 <div>
                     <h3 class="text-text text-lg font-bold">Recent Transactions</h3>
@@ -186,7 +190,8 @@
 
                 <div class="transactions mt-4">
 
-                    <div class="transaction-block-spent p-4 flex justify-between items-center hover:bg-blob2/40 rounded-sm">
+                    <div
+                        class="transaction-block-spent p-4 flex justify-between items-center hover:bg-blob2/30 rounded-sm">
 
                         <div>
                             <p class="text-text/95 font-medium text-[16px]"> Whole Food Market </p>
@@ -199,7 +204,8 @@
 
                     </div>
 
-                    <div class="transaction-block-deposit p-4 flex justify-between items-center hover:bg-blob2/40 rounded-sm">
+                    <div
+                        class="transaction-block-deposit p-4 flex justify-between items-center hover:bg-blob2/40 rounded-sm">
 
                         <div>
                             <p class="text-text/95 font-medium text-[16px]"> Salary deposit </p>
@@ -207,7 +213,7 @@
                         </div>
 
                         <div class="spent text-income font-medium text-[16px]">
-                            -$156.40
+                            +$156.40
                         </div>
 
                     </div>
@@ -216,10 +222,119 @@
 
             </div>
 
-             <div class="bg-glass-strong rounded-lg border-2 border-white p-6 flex flex-col justify-between">
+            <!-- Form  -->
+            <div class="bg-glass-strong/70 rounded-lg border-2 border-white p-6 flex flex-col gap-6">
 
                 <div>
                     <h3 class="text-text text-lg font-bold">Quick Add</h3>
+                </div>
+
+                <div class="form-opener bg-blob2/30 rounded-sm p-1 flex">
+                    <button
+                        class="active expense-btn text-expense text-sm font-medium px-4 py-3 rounded-[8px] w-full cursor-pointer"
+                        data-target="expense-form">Expense</button>
+                    <button
+                        class="expense-btn text-income text-sm font-medium px-4 py-3 rounded-[8px] w-full cursor-pointer"
+                        data-target="income-form">Income</button>
+                </div>
+
+                <div class="forms">
+
+                    <div id="expense-form">
+
+                        <form action="" class="text-sm text-muted font-medium flex flex-col gap-4">
+
+                            <div>
+                                <label for="amount">Amount</label>
+                                <div>
+                                    <input type="number" name="amount" id="amount"
+                                        class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent"
+                                        placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <div class="flex gap-2">
+
+                                <div class="flex-1">
+                                    <label for="category">Category</label>
+                                    <div>
+                                        <select name="expenseoptions" id="expense-options"
+                                            class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent text-[16px] placeholder:text-muted">
+                                            <option value="food">Salary</option>
+                                            <option value="food">Food</option>
+                                            <option value="travel">Travel</option>
+                                            <option value="Shopping">Shopping</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="flex-1">
+                                    <label for="date">Date</label>
+                                    <div>
+                                        <input type="date" name="date" id="date"
+                                            class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent placeholder:text-muted">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <label for="amount">Note</label>
+                                <div>
+                                    <input type="textarea" name="amount" id="amount"
+                                        class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent"
+                                        placeholder="What is it for?">
+                                </div>
+                            </div>
+
+                            <div class="submit-btn">
+                                <button
+                                    class="px-6 h-12 bg-[linear-gradient(135deg,#6a5cff_0%,#9a6bff_55%,#ff8fb0_100%)] shadow-[0_6px_18px_rgba(106,_92,_255,_.4)] text-hero-text text-sm rounded-sm w-full cursor-pointer"
+                                    type="submit">Save Expense</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div id="income-form" class="hidden">
+
+                        <form action="" class="text-sm text-muted font-medium flex flex-col gap-4">
+
+                            <div>
+                                <label for="amount">Amount</label>
+                                <div>
+                                    <input type="number" name="amount" id="amount"
+                                        class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent"
+                                        placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <label for="date">Date</label>
+                                <div>
+                                    <input type="date" name="date" id="date"
+                                        class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent placeholder:text-muted">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="amount">Note</label>
+                                <div>
+                                    <input type="textarea" name="amount" id="amount"
+                                        class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent"
+                                        placeholder="What is it for?">
+                                </div>
+                            </div>
+
+                            <div class="submit-btn">
+                                <button
+                                    class="px-6 h-12 bg-[linear-gradient(135deg,#6a5cff_0%,#9a6bff_55%,#ff8fb0_100%)] shadow-[0_6px_18px_rgba(106,_92,_255,_.4)] text-hero-text text-sm rounded-sm w-full cursor-pointer"
+                                    type="submit">Save Expense</button>
+                            </div>
+
+                        </form>
+                    </div>
+
                 </div>
 
             </div>
