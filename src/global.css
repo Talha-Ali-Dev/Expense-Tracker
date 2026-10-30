@@ -98,4 +98,5 @@
 
 .active{
     background-color: var(--glass-strong);
+    color: var(--text);
 }

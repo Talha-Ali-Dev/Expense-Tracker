@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -35,74 +35,77 @@
 
             <div class="menuList flex flex-col gap-2 font-medium">
                 <button href=""
-                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text">Dashboard</button>
+                    class="active text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text tracker-btn"
+                    data-target="dashboard">Dashboard</button>
                 <button href=""
-                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text">Transactions</button>
+                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text tracker-btn"
+                    data-target="all-transactions">Transactions</button>
                 <button href=""
-                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text">Budgets</button>
+                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text tracker-btn">Budgets</button>
                 <button href=""
-                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text">Reports</button>
+                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text tracker-btn">Reports</button>
                 <button href=""
-                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text">Settings</button>
+                    class="text-muted p-3 hover:bg-track rounded-sm focus:bg-glass-strong flex justify-start items-center focus:text-text tracker-btn">Settings</button>
             </div>
 
         </aside>
 
-        <main class="col-span-4">
+        <main class="col-span-4 z-2">
 
-            <!-- Dashboard  -->
-            <div class="dashboard grid grid-cols-1 lg:grid-cols-3 z-2 justify-start gap-6">
+            <div class="col-span-3 header flex justify-between items-start p-6">
+                <div class="">
+                    <h1 class="text-text text-3xl font-semibold">Good Morning</h1>
+                    <p class="text-muted">Here's where your money went this month.</p>
+                </div>
 
-                <div class="col-span-3 header flex justify-between items-start p-6">
-                    <div class="">
-                        <h1 class="text-text text-3xl font-semibold">Good Morning</h1>
-                        <p class="text-muted">Here's where your money went this month.</p>
+                <div class="flex items-center gap-4">
+
+                    <div
+                        class="search-box text-muted py-3 px-4 bg-glass-strong rounded-lg flex justify-start items-center gap-2 border border-white">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="text-muted">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+
+                        <input type="search" class="outline-0 ring-0 text-text text-sm" placeholder="Search expenses">
                     </div>
 
-                    <div class="flex items-center gap-4">
+                    <button
+                        class="mode-changer size-11 rounded-full bg-glass-strong border border-white flex justify-center items-center">
 
-                        <div
-                            class="search-box text-muted py-3 px-4 bg-glass-strong rounded-lg flex justify-start items-center gap-2 border border-white">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                        <span class="sun hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="text-muted">
-                                <circle cx="11" cy="11" r="8" />
-                                <path d="m21 21-4.35-4.35" />
+                                stroke-linejoin="round" class="text-text">
+                                <circle cx="12" cy="12" r="4" />
+                                <path
+                                    d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
                             </svg>
+                        </span>
 
-                            <input type="search" class="outline-0 ring-0 text-text text-sm"
-                                placeholder="Search expenses">
-                        </div>
-
-                        <button
-                            class="mode-changer size-11 rounded-full bg-glass-strong border border-white flex justify-center items-center">
-
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="text-text">
-                        <circle cx="12" cy="12" r="4" />
-                        <path
-                            d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
-                    </svg> -->
-
-
+                        <span class="moon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="text-text">
                                 <path
                                     d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.463.402.807a6.5 6.5 0 0 0 8.268 8.268c.344-.215.829-.003.803.397z" />
                             </svg>
+                        </span>
 
-                        </button>
+                    </button>
 
-                        <button
-                            class="px-6 h-12 bg-[linear-gradient(135deg,#6a5cff_0%,#9a6bff_55%,#ff8fb0_100%)] shadow-[0_6px_18px_rgba(106,_92,_255,_.4)] text-hero-text text-sm rounded-sm">Add
-                            Expense</button>
-
-                    </div>
+                    <button
+                        class="px-6 h-12 bg-[linear-gradient(135deg,#6a5cff_0%,#9a6bff_55%,#ff8fb0_100%)] shadow-[0_6px_18px_rgba(106,_92,_255,_.4)] text-hero-text text-sm rounded-sm">Add
+                        Expense</button>
 
                 </div>
+
+            </div>
+            <!-- Dashboard  -->
+            <div class="dashboard grid grid-cols-1 lg:grid-cols-3 justify-start gap-6" id="dashboard">
 
                 <!-- Balance  -->
                 <div
@@ -348,39 +351,42 @@
             </div>
 
             <!-- Transactions  -->
+            <div class="hidden h-screen" id="all-transactions">
 
-            <div class="bg-glass-strong/70 rounded-lg border-2 border-white p-6 flex flex-col col-span-2 all-transactions">
+                <div class="bg-glass-strong/70 rounded-lg border-2 border-white p-6 flex flex-col col-span-2">
 
-                <div>
-                    <h3 class="text-text text-lg font-bold">All Transactions</h3>
-                </div>
-
-                <div class="transactions mt-4">
-
-                    <div
-                        class="transaction-block-spent p-4 flex justify-between items-center hover:bg-blob2/30 rounded-sm">
-
-                        <div>
-                            <p class="text-text/95 font-medium text-[16px]"> Whole Food Market </p>
-                            <p class="text-muted text-xs font-medium mt-1">Food - Today, 10:24 PM</p>
-                        </div>
-
-                        <div class="spent text-expense font-medium text-[16px]">
-                            -$86.40
-                        </div>
-
+                    <div>
+                        <h3 class="text-text text-lg font-bold">All Transactions</h3>
                     </div>
 
-                    <div
-                        class="transaction-block-deposit p-4 flex justify-between items-center hover:bg-blob2/40 rounded-sm">
+                    <div class="transactions mt-4">
 
-                        <div>
-                            <p class="text-text/95 font-medium text-[16px]"> Salary deposit </p>
-                            <p class="text-muted text-xs font-medium mt-1">Income - Today, 12:26 PM</p>
+                        <div
+                            class="transaction-block-spent p-4 flex justify-between items-center hover:bg-blob2/30 rounded-sm">
+
+                            <div>
+                                <p class="text-text/95 font-medium text-[16px]"> Whole Food Market </p>
+                                <p class="text-muted text-xs font-medium mt-1">Food - Today, 10:24 PM</p>
+                            </div>
+
+                            <div class="spent text-expense font-medium text-[16px]">
+                                -$86.40
+                            </div>
+
                         </div>
 
-                        <div class="spent text-income font-medium text-[16px]">
-                            +$156.40
+                        <div
+                            class="transaction-block-deposit p-4 flex justify-between items-center hover:bg-blob2/40 rounded-sm">
+
+                            <div>
+                                <p class="text-text/95 font-medium text-[16px]"> Salary deposit </p>
+                                <p class="text-muted text-xs font-medium mt-1">Income - Today, 12:26 PM</p>
+                            </div>
+
+                            <div class="spent text-income font-medium text-[16px]">
+                                +$156.40
+                            </div>
+
                         </div>
 
                     </div>
@@ -393,6 +399,8 @@
 
     </div>
 
+
+    <script src="script.js"></script>
 </body>
 
 </html>
