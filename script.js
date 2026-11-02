@@ -1,3 +1,4 @@
+// Tabs 
 const trackerBtn = document.querySelectorAll(".tracker-btn");
 const modeChanger = document.querySelector(".mode-changer");
 
@@ -20,7 +21,7 @@ trackerBtn.forEach((clicked) => {
 
 })
 
-
+// Mode Changer 
 modeChanger.addEventListener("click", () => {
 
     const html = document.documentElement;
@@ -43,4 +44,20 @@ modeChanger.addEventListener("click", () => {
         mylight.classList.add("hidden")
     }
 
+})
+
+//Form Buttons
+let formBtns = document.querySelectorAll(".expense-btn")
+formBtns.forEach((btn)=>{
+    btn.addEventListener("click", ()=>{
+        formBtns.forEach((b)=>{
+            b.classList.remove("active");
+            let target = document.getElementById(b.dataset.target);
+            target.classList.add("hidden");
+        })
+
+        btn.classList.add("active");
+        let target = document.getElementById(btn.dataset.target);
+        target.classList.remove("hidden")
+    })
 })
