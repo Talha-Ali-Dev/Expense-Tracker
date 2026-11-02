@@ -47,17 +47,75 @@ modeChanger.addEventListener("click", () => {
 })
 
 //Form Buttons
-let formBtns = document.querySelectorAll(".expense-btn")
-formBtns.forEach((btn)=>{
-    btn.addEventListener("click", ()=>{
-        formBtns.forEach((b)=>{
+let formBtns = document.querySelectorAll(".expense-btn");
+
+formBtns.forEach((btn) => {
+
+    btn.addEventListener("click", () => {
+
+        formBtns.forEach((b) => {
+
             b.classList.remove("active");
+
             let target = document.getElementById(b.dataset.target);
             target.classList.add("hidden");
+
         })
 
         btn.classList.add("active");
+
         let target = document.getElementById(btn.dataset.target);
         target.classList.remove("hidden")
+
     })
 })
+
+// Balance 
+let incomeAmount = document.querySelector("#incomeAmount");
+let expenseAmount = document.querySelector("#expenseAmount");
+
+let incomeForm = document.querySelector(".form-income");
+let epxenseForm = document.querySelector(".form-expense");
+
+let incomeTotal = document.querySelector(".total-income");
+let expenseTotal = document.querySelector(".expense-total");
+
+let IncomeAddtion = [];
+let expenseAddtion = [];
+
+function sum(myarr) {
+    return myarr.reduce((prev, curr) => {
+        return prev + curr;
+    }, 0)
+}
+
+incomeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let amount = Number(incomeAmount.value);
+    if (!amount || amount < 0) return
+    IncomeAddtion.push(amount);
+
+    const total = sum(IncomeAddtion);
+
+    incomeTotal.innerText = `$${total}`;
+
+    incomeForm.reset();
+})
+
+epxenseForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+
+    let amount = Number(expenseAmount.value);
+    if(!amount || amount< 0) return;
+
+    expenseAddtion.push(amount);
+    const total = sum(expenseAddtion);
+
+    expenseTotal.innerText = `$${total}`;
+
+    epxenseForm.reset();
+
+})
+
+
