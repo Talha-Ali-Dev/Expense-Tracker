@@ -58,14 +58,14 @@ formBtns.forEach((btn) => {
             b.classList.remove("active");
 
             let target = document.getElementById(b.dataset.target);
-            target.classList.add("hidden");
+            if (target) target.classList.add("hidden");
 
         })
 
         btn.classList.add("active");
 
         let target = document.getElementById(btn.dataset.target);
-        target.classList.remove("hidden")
+        if (target) target.classList.remove("hidden")
 
     })
 })
@@ -79,9 +79,15 @@ let epxenseForm = document.querySelector(".form-expense");
 
 let incomeTotal = document.querySelector(".total-income");
 let expenseTotal = document.querySelector(".expense-total");
+let totalBalanceAmount = document.querySelector(".total-balance");
 
 let IncomeAddtion = [];
 let expenseAddtion = [];
+
+let totalIncomeAddition = 0;
+let totalExpenseAddition = 0;
+
+let totalBalance = 0;
 
 function sum(myarr) {
     return myarr.reduce((prev, curr) => {
@@ -93,27 +99,38 @@ incomeForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     let amount = Number(incomeAmount.value);
-    if (!amount || amount < 0) return
+
+    if (!Number.isFinite(amount) || amount < 0) return
     IncomeAddtion.push(amount);
 
-    const total = sum(IncomeAddtion);
+    totalIncomeAddition = sum(IncomeAddtion);
+    totalBalance = totalIncomeAddition - totalExpenseAddition;
 
-    incomeTotal.innerText = `$${total}`;
+    incomeTotal.innerText = `$${totalIncomeAddition}`;
+    totalBalanceAmount.innerText = `$${totalBalance}`;
 
     incomeForm.reset();
 })
 
-epxenseForm.addEventListener("submit", (e)=>{
+epxenseForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     let amount = Number(expenseAmount.value);
-    if(!amount || amount< 0) return;
+    if (!Number.isFinite(amount) || amount < 0) return;
 
     expenseAddtion.push(amount);
-    const total = sum(expenseAddtion);
+    totalExpenseAddition = sum(expenseAddtion);
+    totalBalance = totalIncomeAddition - totalExpenseAddition;
 
-    expenseTotal.innerText = `$${total}`;
+    if(amount > totalBalance ) return
+
+     totalBalanceAmount.innerText = `$${totalBalance}`;
+
+    expenseTotal.innerText = `$${totalExpenseAddition}`;
 
     epxenseForm.reset();
 
 });
+
+
+
