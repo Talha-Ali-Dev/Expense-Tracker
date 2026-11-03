@@ -122,9 +122,9 @@ epxenseForm.addEventListener("submit", (e) => {
     totalExpenseAddition = sum(expenseAddtion);
     totalBalance = totalIncomeAddition - totalExpenseAddition;
 
-    if(amount > totalBalance ) return
+    if (amount > totalBalance) return
 
-     totalBalanceAmount.innerText = `$${totalBalance}`;
+    totalBalanceAmount.innerText = `$${totalBalance}`;
 
     expenseTotal.innerText = `$${totalExpenseAddition}`;
 
