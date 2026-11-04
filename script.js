@@ -1,11 +1,9 @@
-// Tabs
+// Tabs 
 const trackerBtn = document.querySelectorAll(".tracker-btn");
 const modeChanger = document.querySelector(".mode-changer");
 
 trackerBtn.forEach((clicked) => {
-trackerBtn.forEach((clicked) => {
 
-    clicked.addEventListener("click", () => {
     clicked.addEventListener("click", () => {
 
         trackerBtn.forEach((btn) => {
@@ -13,27 +11,17 @@ trackerBtn.forEach((clicked) => {
             let target = document.getElementById(btn.dataset.target);
             if (target) target.classList.add("hidden")
         })
-        trackerBtn.forEach((btn) => {
-            btn.classList.remove("active");
-            let target = document.getElementById(btn.dataset.target);
-            if (target) target.classList.add("hidden")
-        })
 
-        clicked.classList.add("active");
         clicked.classList.add("active");
 
         let target = document.getElementById(clicked.dataset.target);
         if (target) target.classList.remove("hidden")
-        let target = document.getElementById(clicked.dataset.target);
-        if (target) target.classList.remove("hidden")
 
-    })
     })
 
 })
-})
 
-// Mode Changer
+// Mode Changer 
 if (modeChanger) {
     modeChanger.addEventListener("click", () => {
 
@@ -86,7 +74,7 @@ if (formBtns) {
     })
 }
 
-// Balance
+// Balance 
 let incomeAmount = document.querySelector("#incomeAmount");
 let expenseAmount = document.querySelector("#expenseAmount");
 
@@ -113,7 +101,6 @@ function sum(myarr) {
     }, 0)
 }
 
-// LOCAL STORAGE: Restore dashboard when page loads
 totalIncomeAddition = sum(IncomeAddtion);
 totalExpenseAddition = sum(expenseAddtion);
 totalBalance = totalIncomeAddition - totalExpenseAddition;
@@ -133,7 +120,7 @@ if (incomeForm) {
         if (!Number.isFinite(amount) || amount <= 0) return
         IncomeAddtion.push(amount);
 
-        localStorage.setItem(JSON.stringify("IncomeAddition"))
+        localStorage.setItem("IncomeAddition", JSON.stringify(IncomeAddtion))
 
         totalIncomeAddition = sum(IncomeAddtion);
         totalBalance = totalIncomeAddition - totalExpenseAddition;
@@ -156,7 +143,7 @@ if (epxenseForm) {
 
         expenseAddtion.push(amount);
 
-        localStorage.setItem(JSON.stringify("expenseAddtion"))
+        localStorage.setItem("expenseAddtion", JSON.stringify(expenseAddtion))
 
         totalExpenseAddition = sum(expenseAddtion);
         totalBalance = totalIncomeAddition - totalExpenseAddition;
