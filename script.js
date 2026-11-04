@@ -1,27 +1,27 @@
-// Tabs 
+// Tabs
 const trackerBtn = document.querySelectorAll(".tracker-btn");
 const modeChanger = document.querySelector(".mode-changer");
 
-    trackerBtn.forEach((clicked) => {
+trackerBtn.forEach((clicked) => {
 
-        clicked.addEventListener("click", () => {
+    clicked.addEventListener("click", () => {
 
-            trackerBtn.forEach((btn) => {
-                btn.classList.remove("active");
-                let target = document.getElementById(btn.dataset.target);
-                if (target) target.classList.add("hidden")
-            })
-
-            clicked.classList.add("active");
-
-            let target = document.getElementById(clicked.dataset.target);
-            if (target) target.classList.remove("hidden")
-
+        trackerBtn.forEach((btn) => {
+            btn.classList.remove("active");
+            let target = document.getElementById(btn.dataset.target);
+            if (target) target.classList.add("hidden")
         })
+
+        clicked.classList.add("active");
+
+        let target = document.getElementById(clicked.dataset.target);
+        if (target) target.classList.remove("hidden")
 
     })
 
-// Mode Changer 
+})
+
+// Mode Changer
 if (modeChanger) {
     modeChanger.addEventListener("click", () => {
 
@@ -74,7 +74,7 @@ if (formBtns) {
     })
 }
 
-// Balance 
+// Balance
 let incomeAmount = document.querySelector("#incomeAmount");
 let expenseAmount = document.querySelector("#expenseAmount");
 
@@ -87,8 +87,9 @@ let totalBalanceAmount = document.querySelector(".total-balance");
 let expTotal = document.querySelector(".exp-total");
 let leftBalance = document.querySelector(".left-balance");
 
-let IncomeAddtion = [];
-let expenseAddtion = [];
+// LOCAL STORAGE: Load saved transactions
+let IncomeAddtion = JSON.parse(localStorage.getItem("IncomeAddtion")) || [];
+let expenseAddtion = JSON.parse(localStorage.getItem("expenseAddtion")) || [];
 
 let totalIncomeAddition = 0;
 let totalExpenseAddition = 0;
@@ -101,6 +102,17 @@ function sum(myarr) {
     }, 0)
 }
 
+// LOCAL STORAGE: Restore dashboard when page loads
+totalIncomeAddition = sum(IncomeAddtion);
+totalExpenseAddition = sum(expenseAddtion);
+totalBalance = totalIncomeAddition - totalExpenseAddition;
+
+if (incomeTotal) incomeTotal.innerText = `$${totalIncomeAddition}`;
+if (expenseTotal) expenseTotal.innerText = `$${totalExpenseAddition}`;
+if (expTotal) expTotal.innerText = `$${totalExpenseAddition}`;
+if (totalBalanceAmount) totalBalanceAmount.innerText = `$${totalBalance}`;
+if (leftBalance) leftBalance.innerText = `$${totalBalance}`;
+
 if (incomeForm) {
     incomeForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -109,6 +121,9 @@ if (incomeForm) {
 
         if (!Number.isFinite(amount) || amount <= 0) return
         IncomeAddtion.push(amount);
+
+        // LOCAL STORAGE: Save income transactions
+        localStorage.setItem("IncomeAddtion", JSON.stringify(IncomeAddtion));
 
         totalIncomeAddition = sum(IncomeAddtion);
         totalBalance = totalIncomeAddition - totalExpenseAddition;
@@ -130,6 +145,10 @@ if (epxenseForm) {
         if (amount > totalBalance) return
 
         expenseAddtion.push(amount);
+
+        // LOCAL STORAGE: Save expense transactions
+        localStorage.setItem("expenseAddtion", JSON.stringify(expenseAddtion));
+
         totalExpenseAddition = sum(expenseAddtion);
         totalBalance = totalIncomeAddition - totalExpenseAddition;
 
