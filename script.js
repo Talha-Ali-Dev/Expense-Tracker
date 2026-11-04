@@ -1,9 +1,11 @@
-// Tabs 
+// Tabs
 const trackerBtn = document.querySelectorAll(".tracker-btn");
 const modeChanger = document.querySelector(".mode-changer");
 
 trackerBtn.forEach((clicked) => {
+trackerBtn.forEach((clicked) => {
 
+    clicked.addEventListener("click", () => {
     clicked.addEventListener("click", () => {
 
         trackerBtn.forEach((btn) => {
@@ -11,17 +13,27 @@ trackerBtn.forEach((clicked) => {
             let target = document.getElementById(btn.dataset.target);
             if (target) target.classList.add("hidden")
         })
+        trackerBtn.forEach((btn) => {
+            btn.classList.remove("active");
+            let target = document.getElementById(btn.dataset.target);
+            if (target) target.classList.add("hidden")
+        })
 
+        clicked.classList.add("active");
         clicked.classList.add("active");
 
         let target = document.getElementById(clicked.dataset.target);
         if (target) target.classList.remove("hidden")
+        let target = document.getElementById(clicked.dataset.target);
+        if (target) target.classList.remove("hidden")
 
+    })
     })
 
 })
+})
 
-// Mode Changer 
+// Mode Changer
 if (modeChanger) {
     modeChanger.addEventListener("click", () => {
 
@@ -74,7 +86,7 @@ if (formBtns) {
     })
 }
 
-// Balance 
+// Balance
 let incomeAmount = document.querySelector("#incomeAmount");
 let expenseAmount = document.querySelector("#expenseAmount");
 
@@ -100,6 +112,17 @@ function sum(myarr) {
         return prev + curr;
     }, 0)
 }
+
+// LOCAL STORAGE: Restore dashboard when page loads
+totalIncomeAddition = sum(IncomeAddtion);
+totalExpenseAddition = sum(expenseAddtion);
+totalBalance = totalIncomeAddition - totalExpenseAddition;
+
+if (incomeTotal) incomeTotal.innerText = `$${totalIncomeAddition}`;
+if (expenseTotal) expenseTotal.innerText = `$${totalExpenseAddition}`;
+if (expTotal) expTotal.innerText = `$${totalExpenseAddition}`;
+if (totalBalanceAmount) totalBalanceAmount.innerText = `$${totalBalance}`;
+if (leftBalance) leftBalance.innerText = `$${totalBalance}`;
 
 if (incomeForm) {
     incomeForm.addEventListener("submit", (e) => {
