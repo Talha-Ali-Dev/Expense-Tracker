@@ -2,73 +2,77 @@
 const trackerBtn = document.querySelectorAll(".tracker-btn");
 const modeChanger = document.querySelector(".mode-changer");
 
-trackerBtn.forEach((clicked) => {
+    trackerBtn.forEach((clicked) => {
 
-    clicked.addEventListener("click", () => {
+        clicked.addEventListener("click", () => {
 
-        trackerBtn.forEach((btn) => {
-            btn.classList.remove("active");
-            let target = document.getElementById(btn.dataset.target);
-            if (target) target.classList.add("hidden")
+            trackerBtn.forEach((btn) => {
+                btn.classList.remove("active");
+                let target = document.getElementById(btn.dataset.target);
+                if (target) target.classList.add("hidden")
+            })
+
+            clicked.classList.add("active");
+
+            let target = document.getElementById(clicked.dataset.target);
+            if (target) target.classList.remove("hidden")
+
         })
-
-        clicked.classList.add("active");
-
-        let target = document.getElementById(clicked.dataset.target);
-        if (target) target.classList.remove("hidden")
 
     })
 
-})
-
 // Mode Changer 
-modeChanger.addEventListener("click", () => {
+if (modeChanger) {
+    modeChanger.addEventListener("click", () => {
 
-    const html = document.documentElement;
-    let mylight = document.querySelector(".sun")
-    let mydark = document.querySelector(".moon")
+        const html = document.documentElement;
+        let mylight = document.querySelector(".sun")
+        let mydark = document.querySelector(".moon")
 
-    if (html.dataset.theme === "light") {
+        if (html.dataset.theme === "light") {
 
-        html.dataset.theme = "dark"
+            html.dataset.theme = "dark"
 
-        mylight.classList.remove("hidden")
-        mydark.classList.add("hidden")
+            if (mylight) mylight.classList.remove("hidden")
+            if (mydark) mydark.classList.add("hidden")
 
-    }
-    else {
+        }
+        else {
 
-        html.dataset.theme = "light"
+            html.dataset.theme = "light"
 
-        mydark.classList.remove("hidden")
-        mylight.classList.add("hidden")
-    }
+            if (mydark) mydark.classList.remove("hidden")
+            if (mylight) mylight.classList.add("hidden")
+        }
 
-})
+    })
+}
 
 //Form Buttons
 let formBtns = document.querySelectorAll(".expense-btn");
 
-formBtns.forEach((btn) => {
+if (formBtns) {
+    formBtns.forEach((btn) => {
 
-    btn.addEventListener("click", () => {
+        btn.addEventListener("click", () => {
 
-        formBtns.forEach((b) => {
+            formBtns.forEach((b) => {
 
-            b.classList.remove("active");
+                b.classList.remove("active");
 
-            let target = document.getElementById(b.dataset.target);
-            if (target) target.classList.add("hidden");
+                let target = document.getElementById(b.dataset.target);
+                if (target) target.classList.add("hidden");
+
+            })
+
+            btn.classList.add("active");
+
+            let target = document.getElementById(btn.dataset.target);
+            if (target) target.classList.remove("hidden")
 
         })
-
-        btn.classList.add("active");
-
-        let target = document.getElementById(btn.dataset.target);
-        if (target) target.classList.remove("hidden")
-
     })
-})
+}
 
 // Balance 
 let incomeAmount = document.querySelector("#incomeAmount");
@@ -80,6 +84,8 @@ let epxenseForm = document.querySelector(".form-expense");
 let incomeTotal = document.querySelector(".total-income");
 let expenseTotal = document.querySelector(".expense-total");
 let totalBalanceAmount = document.querySelector(".total-balance");
+let expTotal = document.querySelector(".exp-total");
+let leftBalance = document.querySelector(".left-balance");
 
 let IncomeAddtion = [];
 let expenseAddtion = [];
@@ -95,42 +101,46 @@ function sum(myarr) {
     }, 0)
 }
 
-incomeForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+if (incomeForm) {
+    incomeForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    let amount = Number(incomeAmount.value);
+        let amount = Number(incomeAmount.value);
 
-    if (!Number.isFinite(amount) || amount < 0) return
-    IncomeAddtion.push(amount);
+        if (!Number.isFinite(amount) || amount <= 0) return
+        IncomeAddtion.push(amount);
 
-    totalIncomeAddition = sum(IncomeAddtion);
-    totalBalance = totalIncomeAddition - totalExpenseAddition;
+        totalIncomeAddition = sum(IncomeAddtion);
+        totalBalance = totalIncomeAddition - totalExpenseAddition;
 
-    incomeTotal.innerText = `$${totalIncomeAddition}`;
-    totalBalanceAmount.innerText = `$${totalBalance}`;
+        incomeTotal.innerText = `$${totalIncomeAddition}`;
+        totalBalanceAmount.innerText = `$${totalBalance}`;
+        leftBalance.innerText = `$${totalBalance}`;
 
-    incomeForm.reset();
-})
+        incomeForm.reset();
+    })
+}
 
-epxenseForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+if (epxenseForm) {
+    epxenseForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    let amount = Number(expenseAmount.value);
-    if (!Number.isFinite(amount) || amount < 0) return;
+        let amount = Number(expenseAmount.value);
+        if (!Number.isFinite(amount) || amount <= 0) return;
+        if (amount > totalBalance) return
 
-    expenseAddtion.push(amount);
-    totalExpenseAddition = sum(expenseAddtion);
-    totalBalance = totalIncomeAddition - totalExpenseAddition;
-
-    if (amount > totalBalance) return
-
-    totalBalanceAmount.innerText = `$${totalBalance}`;
-
-    expenseTotal.innerText = `$${totalExpenseAddition}`;
-
-    epxenseForm.reset();
-
-});
+        expenseAddtion.push(amount);
+        totalExpenseAddition = sum(expenseAddtion);
+        totalBalance = totalIncomeAddition - totalExpenseAddition;
 
 
+        totalBalanceAmount.innerText = `$${totalBalance}`;
+        leftBalance.innerText = `$${totalBalance}`;
 
+        expenseTotal.innerText = `$${totalExpenseAddition}`;
+        expTotal.innerText = `$${totalExpenseAddition}`;
+
+        epxenseForm.reset();
+
+    });
+}
