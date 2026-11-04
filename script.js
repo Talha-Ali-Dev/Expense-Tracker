@@ -87,7 +87,7 @@ let totalBalanceAmount = document.querySelector(".total-balance");
 let expTotal = document.querySelector(".exp-total");
 let leftBalance = document.querySelector(".left-balance");
 
-let IncomeAddtion = JSON.parse(localStorage.getItem("IncomeAddition")) || [];
+let IncomeAddtion = JSON.parse(localStorage.getItem("IncomeAddtion")) || [];
 let expenseAddtion = JSON.parse(localStorage.getItem("expenseAddtion")) || [];
 
 let totalIncomeAddition = 0;
@@ -115,12 +115,14 @@ if (incomeForm) {
     incomeForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
+        if (!incomeAmount) return;
+
         let amount = Number(incomeAmount.value);
 
         if (!Number.isFinite(amount) || amount <= 0) return
         IncomeAddtion.push(amount);
 
-        localStorage.setItem("IncomeAddition", JSON.stringify(IncomeAddtion))
+        localStorage.setItem("IncomeAddtion", JSON.stringify(IncomeAddtion))
 
         totalIncomeAddition = sum(IncomeAddtion);
         totalBalance = totalIncomeAddition - totalExpenseAddition;
