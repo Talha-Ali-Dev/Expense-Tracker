@@ -2,24 +2,24 @@
 const trackerBtn = document.querySelectorAll(".tracker-btn");
 const modeChanger = document.querySelector(".mode-changer");
 
-    trackerBtn.forEach((clicked) => {
+trackerBtn.forEach((clicked) => {
 
-        clicked.addEventListener("click", () => {
+    clicked.addEventListener("click", () => {
 
-            trackerBtn.forEach((btn) => {
-                btn.classList.remove("active");
-                let target = document.getElementById(btn.dataset.target);
-                if (target) target.classList.add("hidden")
-            })
-
-            clicked.classList.add("active");
-
-            let target = document.getElementById(clicked.dataset.target);
-            if (target) target.classList.remove("hidden")
-
+        trackerBtn.forEach((btn) => {
+            btn.classList.remove("active");
+            let target = document.getElementById(btn.dataset.target);
+            if (target) target.classList.add("hidden")
         })
 
+        clicked.classList.add("active");
+
+        let target = document.getElementById(clicked.dataset.target);
+        if (target) target.classList.remove("hidden")
+
     })
+
+})
 
 // Mode Changer 
 if (modeChanger) {
@@ -87,8 +87,8 @@ let totalBalanceAmount = document.querySelector(".total-balance");
 let expTotal = document.querySelector(".exp-total");
 let leftBalance = document.querySelector(".left-balance");
 
-let IncomeAddtion = [];
-let expenseAddtion = [];
+let IncomeAddtion = JSON.parse(localStorage.getItem("IncomeAddition")) || [];
+let expenseAddtion = JSON.parse(localStorage.getItem("expenseAddtion")) || [];
 
 let totalIncomeAddition = 0;
 let totalExpenseAddition = 0;
@@ -110,6 +110,8 @@ if (incomeForm) {
         if (!Number.isFinite(amount) || amount <= 0) return
         IncomeAddtion.push(amount);
 
+        localStorage.setItem(JSON.stringify("IncomeAddition"))
+
         totalIncomeAddition = sum(IncomeAddtion);
         totalBalance = totalIncomeAddition - totalExpenseAddition;
 
@@ -130,6 +132,9 @@ if (epxenseForm) {
         if (amount > totalBalance) return
 
         expenseAddtion.push(amount);
+
+        localStorage.setItem(JSON.stringify("expenseAddtion"))
+
         totalExpenseAddition = sum(expenseAddtion);
         totalBalance = totalIncomeAddition - totalExpenseAddition;
 
