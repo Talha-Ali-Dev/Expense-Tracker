@@ -90,6 +90,8 @@ let leftBalance = document.querySelector(".left-balance");
 let IncomeAddtion = JSON.parse(localStorage.getItem("IncomeAddtion")) || [];
 let expenseAddtion = JSON.parse(localStorage.getItem("expenseAddtion")) || [];
 
+let date = new Date();
+
 let totalIncomeAddition = 0;
 let totalExpenseAddition = 0;
 
@@ -100,6 +102,12 @@ function sum(myarr) {
         return prev + curr;
     }, 0)
 }
+
+// Transactions
+let expenseOptions = document.querySelector("#expense-options");
+let transactions = document.querySelector(".transactions");
+let expenseNote = document.querySelector("#expense-note");
+let incomeNote = document.querySelector("#income-note");
 
 totalIncomeAddition = sum(IncomeAddtion);
 totalExpenseAddition = sum(expenseAddtion);
@@ -131,6 +139,24 @@ if (incomeForm) {
         totalBalanceAmount.innerText = `$${totalBalance}`;
         leftBalance.innerText = `$${totalBalance}`;
 
+        transactions.insertAdjacentHTML("beforeend", `
+            
+            <div
+                class="transaction-block-deposit p-4 flex justify-between items-center hover:bg-blob2/40 rounded-sm">
+
+                <div>
+                 <p class="text-text/95 font-medium text-[16px]"> ${incomeNote.value}</p>
+                 <p class="text-muted text-xs font-medium mt-1">Income - ${date.toLocaleDateString("en-US", { weekday: "long" })}, ${date.toLocaleTimeString()}</p>
+                </div>
+
+                <div class="spent text-income font-medium text-[16px]">
+                 +$${amount}
+                </div>
+
+            </div>
+            
+            `)
+
         incomeForm.reset();
     })
 }
@@ -156,6 +182,24 @@ if (epxenseForm) {
 
         expenseTotal.innerText = `$${totalExpenseAddition}`;
         expTotal.innerText = `$${totalExpenseAddition}`;
+
+        transactions.insertAdjacentHTML("beforeend", `
+    
+       <div
+        class="transaction-block-spent p-4 flex justify-between items-center hover:bg-blob2/30 rounded-sm">
+
+            <div>
+                 <p class="text-text/95 font-medium text-[16px]"> ${expenseNote.value} </p>
+                 <p class="text-muted text-xs font-medium mt-1">${expenseOptions.value} - ${date.toLocaleDateString("en-US", { weekday: "long" })}, ${date.toLocaleTimeString()}</p>
+            </div>
+
+            <div class="spent text-expense font-medium text-[16px]">
+                 -$${amount}
+             </div>
+
+        </div>
+
+    `);
 
         epxenseForm.reset();
 

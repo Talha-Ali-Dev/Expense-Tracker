@@ -269,30 +269,29 @@
                                         <div>
                                             <select name="expenseoptions" id="expense-options"
                                                 class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent text-[16px] placeholder:text-muted">
-                                                <option value="food">Salary</option>
-                                                <option value="food">Food</option>
-                                                <option value="travel">Travel</option>
+                                                <option value="Food">Food</option>
+                                                <option value="Travel">Travel</option>
                                                 <option value="Shopping">Shopping</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="flex-1">
+                                    <!-- <div class="flex-1">
                                         <label for="date">Date</label>
                                         <div>
                                             <input type="date" name="date" id="date"
                                                 class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent placeholder:text-muted">
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                 </div>
 
                                 <div>
                                     <label for="amount">Note</label>
                                     <div>
-                                        <input type="textarea" name="amount" id="amount"
+                                        <input type="textarea" name="amount" id="expense-note"
                                             class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent"
-                                            placeholder="What is it for?">
+                                            placeholder="What is it for?" required>
                                     </div>
                                 </div>
 
@@ -329,7 +328,7 @@
                                 <div>
                                     <label for="amount">Note</label>
                                     <div>
-                                        <input type="textarea" name="amount" id="amount"
+                                        <input type="textarea" name="amount" id="income-note"
                                             class="w-full p-2.5 bg-glass-strong rounded-sm border-2 border-white mt-1 focus:outline-accent"
                                             placeholder="What is it for?">
                                     </div>
