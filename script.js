@@ -161,6 +161,8 @@ if (incomeForm) {
     })
 }
 
+let alltransactions = document.querySelector("#all-transactions-block");
+
 if (epxenseForm) {
     epxenseForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -200,6 +202,25 @@ if (epxenseForm) {
         </div>
 
     `);
+
+        alltransactions.insertAdjacentHTML("beforeend", `
+    
+       <div
+        class="transaction-block-spent p-4 flex justify-between items-center hover:bg-blob2/30 rounded-sm">
+
+            <div>
+                 <p class="text-text/95 font-medium text-[16px]"> ${expenseNote.value} </p>
+                 <p class="text-muted text-xs font-medium mt-1">${expenseOptions.value} - ${date.toLocaleDateString("en-US", { weekday: "long" })}, ${date.toLocaleTimeString()}</p>
+            </div>
+
+            <div class="spent text-expense font-medium text-[16px]">
+                 -$${amount}
+             </div>
+
+        </div>
+
+    `);
+
 
         epxenseForm.reset();
 
